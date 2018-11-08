@@ -1,0 +1,47 @@
+
+###  myzshrc
+
+export EDITOR=vim
+export VISUAL=vim
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PATH:$PYENV_ROOT/bin"
+eval "$(pyenv init -)"
+
+export PATH="$PATH:$(yarn global bin)"
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# aliases
+alias gp="git pull origin master"
+alias gb="git branch"
+alias gm="git checkout master"
+alias gs="git status"
+alias gd="git diff"
+alias gc="git cleanup"
+alias gam="git commit -am"
+
+# kubernetes
+source <(kubectl completion zsh)
+alias k="kubectl"
+alias kg="k get"
+alias kgpo="kg pod"
+alias kl="kubetail"
+alias kc="kubectx"
+alias kn="kubens"
+
+autoload -U colors; colors
+source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
+RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+
+# peco inc search
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
+
+### end of myzshrc
