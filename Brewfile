@@ -4,9 +4,11 @@ cask_args appdir: "/Applications"
 brew "git"
 brew "zsh"
 brew "jq"
+brew "tldr"
 brew "peco"
 brew "docker"
 brew "ssh-copy-id"
+brew "yarn"
 brew "mas"
 brew "kubectx"
 brew "kubetail"
@@ -16,7 +18,6 @@ tap "superbrothers/zsh-kubectl-prompt"
 brew "zsh-kubectl-prompt"
 
 # brew "spark"
-# brew "tldr"
 # brew "httpie"
 # brew "mycli"
 
@@ -30,11 +31,15 @@ cask 'iterm2'
 cask 'authy'
 cask 'slack'
 cask 'alfred'
+cask 'station'
 cask 'docker'
 cask 'sequel-pro'
 cask 'spectacle'
 cask 'onedrive'
-cask 'bettertouchtool'
 cask 'google-chrome'
 cask 'google-japanese-ime'
 cask 'google-cloud-sdk'
+cask 'visual-studio-code'
+
+# cask 'bettertouchtool'
+# cask 'intellij-idea'
