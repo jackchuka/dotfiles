@@ -18,11 +18,12 @@ if [ $1 = "all" ]; then
 	source $start_dir/mas.sh
 	source $start_dir/zsh.sh
 	source $start_dir/prezto.sh
+	source $start_dir/anyenv.sh
 	exit
 fi
 
 echo "Select install"
-select cmd in "xcode" "brew" "directories" "gitconfig" "mas" "zsh" "prezto" "exit"; do
+select cmd in "xcode" "brew" "directories" "gitconfig" "mas" "zsh" "prezto" "anyenv" "exit"; do
 	case $cmd in
 	"xcode")
 		source $start_dir/xcode.sh
@@ -44,6 +45,9 @@ select cmd in "xcode" "brew" "directories" "gitconfig" "mas" "zsh" "prezto" "exi
 		;;
 	"prezto")
 		source $start_dir/prezto.sh
+		;;
+	"anyenv")
+		source $start_dir/anyenv.sh
 		;;
 	"exit") exit ;;
 	esac
