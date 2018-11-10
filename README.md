@@ -8,6 +8,7 @@ A super lazy programmer's dotfiles, although it's more like a setup script for M
 * Installs AppStore apps via `masfile`
 * Downloads `zsh` and `prezto`
 * Sets `.gitconfig` and `.gitignore_global`
+* Creates directories in `directories`
 
 ## Get Started
 ```sh
