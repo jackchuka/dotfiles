@@ -10,7 +10,7 @@ echoval() {
 
 start_dir=$(pwd)
 
-if [ $1 = "all" ]; then
+if [ "$1" = "all" ]; then
 	source $start_dir/xcode.sh
 	source $start_dir/brew.sh
 	source $start_dir/directories.sh

@@ -17,7 +17,6 @@ fi
 
 # aliases
 alias gp="git pull"
-alias gb="git branch"
 alias gm="git checkout master"
 alias gs="git status"
 alias gd="git diff"

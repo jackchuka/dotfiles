@@ -23,6 +23,7 @@ brew "zsh-kubectl-prompt"
 
 ## languages
 # brew "go"
+# brew "grpc"
 # brew "dep"
 # brew "php"
 
@@ -33,7 +34,7 @@ cask 'slack'
 cask 'alfred'
 cask 'station'
 cask 'docker'
-cask 'sequel-pro'
+cask 'homebrew/cask-versions/sequel-pro-nightly'
 cask 'spectacle'
 cask 'onedrive'
 cask 'google-chrome'
