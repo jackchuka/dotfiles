@@ -16,7 +16,7 @@ if [ -d $HOME/.anyenv ] ; then
 fi
 
 # aliases
-alias gp="git pull origin master"
+alias gp="git pull"
 alias gb="git branch"
 alias gm="git checkout master"
 alias gs="git status"
