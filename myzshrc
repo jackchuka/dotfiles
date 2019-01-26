@@ -4,7 +4,7 @@
 export EDITOR=vim
 export VISUAL=vim
 
-export GOPATH=$HOME/go
+export GOPATH=$HOME/dev
 
 export PATH=$PATH:$GOPATH/bin
 export PATH="$PATH:$(yarn global bin)"
@@ -44,5 +44,18 @@ function peco-history-selection() {
 }
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
+
+# peco ghq
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^]' peco-src
+
 
 ### end of myzshrc

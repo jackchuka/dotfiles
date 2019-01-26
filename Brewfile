@@ -2,6 +2,7 @@ cask_args appdir: "/Applications"
 
 ## commands
 brew "git"
+brew "ghq"
 brew "zsh"
 brew "jq"
 brew "tldr"
