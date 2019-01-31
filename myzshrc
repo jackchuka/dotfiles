@@ -9,6 +9,9 @@ export GOPATH=$HOME/dev
 export PATH=$PATH:$GOPATH/bin
 export PATH="$PATH:$(yarn global bin)"
 
+# sync HISTFILE
+HISTFILE=$HOME/Dropbox/zhistory
+
 # anyenv
 if [ -d $HOME/.anyenv ] ; then
     export PATH="$HOME/.anyenv/bin:$PATH"
