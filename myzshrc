@@ -1,3 +1,4 @@
+#!/usr/bin/zsh
 
 ###  myzshrc
 
@@ -10,7 +11,14 @@ export PATH=$PATH:$GOPATH/bin
 export PATH="$PATH:$(yarn global bin)"
 
 # sync HISTFILE
-HISTFILE=$HOME/Dropbox/zhistory
+if [ -f $HOME/Dropbox/zhistory ] ; then
+    HISTFILE=$HOME/Dropbox/zhistory
+fi
+
+# source local rc
+if [ -f $HOME/Dropbox/myzshrc_local ] ; then
+    source $HOME/Dropbox/myzshrc_local
+fi
 
 # anyenv
 if [ -d $HOME/.anyenv ] ; then
@@ -27,17 +35,19 @@ alias gc="git cleanup"
 alias gam="git commit -am"
 
 # kubernetes
-source <(kubectl completion zsh)
-alias k="kubectl"
-alias kg="k get"
-alias kgpo="kg pod"
-alias kl="kubetail"
-alias kc="kubectx"
-alias kn="kubens"
+if [ $commands[kubectl] ]; then
+    source <(kubectl completion zsh)
+    alias k="kubectl"
+    alias kg="k get"
+    alias kgpo="kg pod"
+    alias kl="kubetail"
+    alias kc="kubectx"
+    alias kn="kubens"
 
-autoload -U colors; colors
-source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
-RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+    autoload -U colors; colors
+    source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
+    RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+fi
 
 # peco inc search
 function peco-history-selection() {
