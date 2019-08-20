@@ -17,6 +17,7 @@ tap "johanhaleby/kubetail"
 brew "kubetail"
 tap "superbrothers/zsh-kubectl-prompt"
 brew "zsh-kubectl-prompt"
+brew "thefuck"
 
 # brew "spark"
 # brew "httpie"

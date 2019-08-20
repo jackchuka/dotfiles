@@ -70,5 +70,8 @@ function peco-src () {
 zle -N peco-src
 bindkey '^]' peco-src
 
+if [ $commands[kubectl] ]; then
+  eval $(thefuck --alias)
+fi
 
 ### end of myzshrc
