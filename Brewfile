@@ -19,6 +19,7 @@ brew "kubetail"
 tap "superbrothers/zsh-kubectl-prompt"
 brew "zsh-kubectl-prompt"
 brew "thefuck"
+brew "lastpass-cli"
 
 # brew "spark"
 # brew "httpie"
