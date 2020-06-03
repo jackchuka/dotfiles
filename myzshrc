@@ -26,6 +26,11 @@ if [ -d $HOME/.anyenv ] ; then
     eval "$(anyenv init -)"
 fi
 
+# gcloud
+if [ -d $HOME/google-cloud-sdk ] ; then
+    export PATH="$HOME/google-cloud-sdk/bin:$PATH"
+fi
+
 # aliases
 alias gp="git pull"
 alias gm="git checkout master"
