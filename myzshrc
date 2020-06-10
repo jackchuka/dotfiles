@@ -33,7 +33,7 @@ fi
 
 # aliases
 alias gp="git pull"
-alias gpo="gp origin $(git symbolic-ref --short HEAD)"
+alias gpo="git pb"
 alias gm="git checkout master"
 alias gs="git status"
 alias gd="git diff"

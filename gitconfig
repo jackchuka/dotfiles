@@ -13,6 +13,9 @@
 	ch = !git branch -a --sort=-authordate | cut -b 3- | perl -pe "s#^remotes/origin/###" | perl -nlE 'say if !$c{$_}++' | grep -v -- '->' | peco | xargs git checkout
 	# show pr preview
 	pr = diff origin/master...
+	pb = !git pull origin $(git symbolic-ref --short HEAD)
 [ghq]
 	# same as $GOPATH/src
-    root = ~/dev/src
+	root = ~/dev/src
+[pull]
+	rebase = false
