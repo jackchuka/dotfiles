@@ -46,9 +46,10 @@ cask 'google-japanese-ime'
 cask 'docker'
 cask 'homebrew/cask-versions/sequel-pro-nightly'
 cask 'visual-studio-code'
-qq
+
 # cask 'onedrive'
 # cask 'google-cloud-sdk'
 # cask 'bettertouchtool'
 # cask 'intellij-idea'
+# cast 'ngrok'
 # cask 'mockoon'
