@@ -44,7 +44,7 @@ cask 'google-japanese-ime'
 
 ## Development Applications
 cask 'docker'
-cask 'homebrew/cask-versions/sequel-pro-nightly'
+cask 'sequel-ace'
 cask 'visual-studio-code'
 
 # cask 'onedrive'
