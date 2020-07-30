@@ -42,6 +42,7 @@ cask 'google-chrome'
 cask 'google-japanese-ime'
 
 ## Development Applications
+cask 'dash'
 cask 'docker'
 cask 'sequel-ace'
 cask 'visual-studio-code'
