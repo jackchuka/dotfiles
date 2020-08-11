@@ -5,21 +5,26 @@
 export EDITOR=vim
 export VISUAL=vim
 
+export DROPBOX_PATH=$HOME/Dropbox
 export GOPATH=$HOME/dev
-
 export PATH=$PATH:$GOPATH/bin
+
 if [ $commands[yarn] ]; then
     export PATH="$PATH:$(yarn global bin)"
 fi
 
+if [ -f $DROPBOX_PATH/kubeconfig ] ; then
+    export KUBECONFIG=$DROPBOX_PATH/kubeconfig
+fi
+
 # sync HISTFILE
-if [ -f $HOME/Dropbox/zhistory ] ; then
-    HISTFILE=$HOME/Dropbox/zhistory
+if [ -f $DROPBOX_PATH/zhistory ] ; then
+    HISTFILE=$DROPBOX_PATH/zhistory
 fi
 
 # source local rc
-if [ -f $HOME/Dropbox/myzshrc_local ] ; then
-    source $HOME/Dropbox/myzshrc_local
+if [ -f $DROPBOX_PATH/myzshrc_local ] ; then
+    source $DROPBOX_PATH/myzshrc_local
 fi
 
 # anyenv
