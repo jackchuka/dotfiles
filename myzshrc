@@ -8,7 +8,9 @@ export VISUAL=vim
 export GOPATH=$HOME/dev
 
 export PATH=$PATH:$GOPATH/bin
-export PATH="$PATH:$(yarn global bin)"
+if [ $commands[yarn] ]; then
+    export PATH="$PATH:$(yarn global bin)"
+fi
 
 # sync HISTFILE
 if [ -f $HOME/Dropbox/zhistory ] ; then
