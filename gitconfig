@@ -15,7 +15,8 @@
 	pr = diff origin/master...
 	pb = !git pull origin $(git symbolic-ref --short HEAD)
 [ghq]
-	# same as $GOPATH/src
-	root = ~/dev/src
+	root = ~/ghq
 [pull]
 	rebase = false
+[url "git@github.com:"]
+	insteadOf = https://github.com/
