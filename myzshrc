@@ -38,6 +38,13 @@ if [ -d $HOME/google-cloud-sdk ] ; then
     export PATH="$HOME/google-cloud-sdk/bin:$PATH"
 fi
 
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+    compinit -u
+fi
+
 # aliases
 alias gp="git pull"
 alias gpo="git pb"
