@@ -16,6 +16,7 @@ brew "thefuck"
 brew "lastpass-cli"
 brew "httpie"
 
+# brew "yamllint"
 # brew "spark"
 # brew "mycli"
 
