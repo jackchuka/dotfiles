@@ -1,6 +1,6 @@
 #!/bin/sh
 
-function select_option() {
+select_option() {
 	ESC=$(printf "\033")
 	cursor_blink_on() { printf "$ESC[?25h"; }
 	cursor_blink_off() { printf "$ESC[?25l"; }
