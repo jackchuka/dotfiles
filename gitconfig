@@ -1,6 +1,7 @@
 [user]
 	name=jackchuka
 	email=jack16.m.u@gmail.com
+	signingkey = 6E838AE26BF7BE25
 [core]
 	editor=vim
 	excludesfile=~/.gitignore_global
@@ -22,3 +23,7 @@
 	rebase = false
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
