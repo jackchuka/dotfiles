@@ -50,7 +50,8 @@ fi
 alias gp="git pull"
 alias gpo="git pb"
 alias grpo="git remote prune origin"
-alias gm="git checkout master"
+alias gm='git checkout "$(git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4)"'
+alias gamend="git add . && git commit --amend --no-edit"
 alias gs="git status"
 alias gd="git diff"
 alias gc="git cleanup"
@@ -94,6 +95,10 @@ bindkey '^]' peco-src
 
 if [ $commands[thefuck] ]; then
   eval $(thefuck --alias)
+fi
+
+if [ $commands[direnv] ]; then
+  eval "$(direnv hook zsh)"
 fi
 
 ### end of myzshrc
