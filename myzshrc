@@ -49,7 +49,7 @@ fi
 # aliases
 alias gp="git pull"
 alias gpo="git pb"
-alias grpo="git remote prune origin"
+alias grpo="gm && gpo && git remote prune origin"
 alias gm='git checkout "$(git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4)"'
 alias gamend="git add . && git commit --amend --no-edit"
 alias gs="git status"
