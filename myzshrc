@@ -14,7 +14,7 @@ if [ $commands[yarn] ]; then
     export PATH="$PATH:$(yarn global bin)"
 fi
 
-if [ -f $DROPBOX_PATH/kubeconfig ] ; then
+if [ -d $DROOPBOX_PATH ] ; then
     export KUBECONFIG=$DROPBOX_PATH/kubeconfig
 fi
 
