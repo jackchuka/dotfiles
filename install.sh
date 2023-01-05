@@ -9,7 +9,7 @@ echoval() {
 }
 
 run_all() {
-  # shellcheck source=./xcode.sh
+	# shellcheck source=./xcode.sh
 	. "$start_dir/xcode.sh"
 	# shellcheck source=./brew.sh
 	. "$start_dir/brew.sh"

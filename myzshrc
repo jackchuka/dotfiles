@@ -19,8 +19,8 @@ if [ -d $DROOPBOX_PATH ] ; then
 fi
 
 # sync HISTFILE
-if [ -f $DROPBOX_PATH/zhistory ] ; then
-    HISTFILE=$DROPBOX_PATH/zhistory
+if [ -d $DROPBOX_PATH ] ; then
+    export HISTFILE=$DROPBOX_PATH/zhistory
 fi
 
 # source local rc
@@ -40,7 +40,7 @@ if [ -d $HOME/google-cloud-sdk ] ; then
 fi
 
 if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
     autoload -Uz compinit
     compinit -u

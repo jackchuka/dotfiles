@@ -8,12 +8,10 @@ brew "zsh"
 brew "jq"
 brew "tldr"
 brew "peco"
-brew "docker"
 brew "ssh-copy-id"
 brew "bat"
 brew "mas"
 brew "thefuck"
-brew "lastpass-cli"
 brew "httpie"
 
 # brew "yamllint"
@@ -45,10 +43,14 @@ cask 'google-japanese-ime'
 ## Development Applications
 cask 'dash'
 cask 'docker'
-cask 'sequel-ace'
 cask 'visual-studio-code'
 
+# cask 'sequel-ace'
+# cask 'pgadmin4'
+# cask 'mongodb-compass'
+
 # cask 'station'
+# cask 'notion'
 # cask 'keycastr'
 # cask 'onedrive'
 # cask 'google-cloud-sdk'
