@@ -2,7 +2,7 @@
 echo "Setting up Homebrew and brew packages..."
 
 if ! command_exists brew; then
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # install all brew packages

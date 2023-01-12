@@ -37,8 +37,11 @@ fi
 # gcloud
 if [ -d $HOME/google-cloud-sdk ] ; then
     export PATH="$HOME/google-cloud-sdk/bin:$PATH"
+    source '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+    source '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
+eval $(/opt/homebrew/bin/brew shellenv)
 if type brew &>/dev/null; then
     export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
@@ -68,7 +71,7 @@ if [ $commands[kubectl] ]; then
     alias kn="kubens"
 
     autoload -U colors; colors
-    source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
+    source /opt/homebrew/etc/zsh-kubectl-prompt/kubectl.zsh
     RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 fi
 
