@@ -104,4 +104,8 @@ if [ $commands[direnv] ]; then
   eval "$(direnv hook zsh)"
 fi
 
+if [ $commands[tree] ]; then
+  alias t="tree -C"
+fi
+
 ### end of myzshrc

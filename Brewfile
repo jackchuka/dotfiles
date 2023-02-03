@@ -14,6 +14,8 @@ brew "bat"
 brew "mas"
 brew "thefuck"
 brew "httpie"
+brew "zsh-completions"
+brew "tree"
 
 # brew "yamllint"
 # brew "spark"
