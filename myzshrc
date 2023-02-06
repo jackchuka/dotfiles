@@ -108,4 +108,6 @@ if [ $commands[tree] ]; then
   alias t="tree -C"
 fi
 
+export GPG_TTY=$(tty)
+
 ### end of myzshrc
