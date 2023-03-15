@@ -17,6 +17,7 @@
 	# show pr preview
 	review = !git diff origin/$(git symbolic-ref refs/remotes/origin/HEAD | cut -d/ -f4)
 	pb = !git pull origin $(git symbolic-ref --short HEAD)
+	save = !git add . && git stash && git stash apply
 [ghq]
 	root = ~/ghq
 [pull]
