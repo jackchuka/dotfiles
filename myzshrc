@@ -11,35 +11,35 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/mysql-client/bin
 
 if [ $commands[yarn] ]; then
-    export PATH="$PATH:$(yarn global bin)"
+  export PATH="$PATH:$(yarn global bin)"
 fi
 
-if [ -d $DROOPBOX_PATH ] ; then
-    export KUBECONFIG=$DROPBOX_PATH/kubeconfig
+if [ -d $DROOPBOX_PATH ]; then
+  export KUBECONFIG=$DROPBOX_PATH/kubeconfig
 fi
 
 # sync HISTFILE
-if [ -d $DROPBOX_PATH ] ; then
-    export HISTFILE=$DROPBOX_PATH/zhistory
+if [ -d $DROPBOX_PATH ]; then
+  export HISTFILE=$DROPBOX_PATH/zhistory
 fi
 
 # source local rc
-if [ -f $DROPBOX_PATH/myzshrc_local ] ; then
-    source $DROPBOX_PATH/myzshrc_local
+if [ -f $DROPBOX_PATH/myzshrc_local ]; then
+  source $DROPBOX_PATH/myzshrc_local
 fi
 
 # anyenv
-if [ -d $HOME/.anyenv ] ; then
-    export PATH="$HOME/.anyenv/bin:$PATH"
-    eval "$(anyenv init -)"
+if [ -d $HOME/.anyenv ]; then
+  export PATH="$HOME/.anyenv/bin:$PATH"
+  eval "$(anyenv init -)"
 fi
 
 eval $(/opt/homebrew/bin/brew shellenv)
 if type brew &>/dev/null; then
-    export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
-    autoload -Uz compinit
-    compinit -u
+  autoload -Uz compinit
+  compinit -u
 fi
 
 # aliases
@@ -55,30 +55,31 @@ alias gam="git commit -am"
 
 # kubernetes
 if [ $commands[kubectl] ]; then
-    source <(kubectl completion zsh)
-    alias k="kubectl"
-    alias kg="k get"
-    alias kgpo="kg pod"
-    alias kl="kubetail"
-    alias kc="kubectx"
-    alias kn="kubens"
+  source <(kubectl completion zsh)
+  alias k="kubectl"
+  alias kg="k get"
+  alias kgpo="kg pod"
+  alias kl="kubetail"
+  alias kc="kubectx"
+  alias kn="kubens"
 
-    autoload -U colors; colors
-    source $(brew --prefix)/etc/zsh-kubectl-prompt/kubectl.zsh
-    RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+  autoload -U colors
+  colors
+  source $(brew --prefix)/etc/zsh-kubectl-prompt/kubectl.zsh
+  RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 fi
 
 # peco inc search
 function peco-history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
-    CURSOR=$#BUFFER
-    zle reset-prompt
+  BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | peco)
+  CURSOR=$#BUFFER
+  zle reset-prompt
 }
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
 # peco ghq
-function peco-src () {
+function peco-src() {
   local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
     BUFFER="cd ${selected_dir}"
@@ -102,10 +103,16 @@ if [ $commands[tree] ]; then
 fi
 
 # gcloud
-if [ $commands[gcloud] ] ; then
-    export PATH="$HOME/google-cloud-sdk/bin:$PATH"
-    source $(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-    source $(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+if [ $commands[gcloud] ]; then
+  export PATH="$HOME/google-cloud-sdk/bin:$PATH"
+  source $(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+  source $(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+fi
+
+# 1password
+if [ $commands[op] ]; then
+  eval "$(op completion zsh)"
+  compdef _op op
 fi
 
 export GPG_TTY=$(tty)
