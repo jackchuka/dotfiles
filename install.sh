@@ -25,8 +25,6 @@ run_all() {
 	. "$start_dir/zsh.sh"
 	# shellcheck source=./prezto.sh
 	. "$start_dir/prezto.sh"
-	# shellcheck source=./anyenv.sh
-	. "$start_dir/anyenv.sh"
 }
 
 start_dir=$(pwd)
@@ -49,7 +47,7 @@ while true; do
 	echo "> Select one option using up/down keys and enter to confirm:"
 	echo ""
 	# shellcheck disable=SC2039
-	options=("all" "xcode" "brew" "ssh" "directories" "gitconfig" "mas" "zsh" "prezto" "anyenv" "exit")
+	options=("all" "xcode" "brew" "ssh" "directories" "gitconfig" "mas" "zsh" "prezto" "exit")
 
 	select_option "${options[@]}"
 	choice=$?

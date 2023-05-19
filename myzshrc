@@ -28,10 +28,9 @@ if [ -f $DROPBOX_PATH/myzshrc_local ]; then
   source $DROPBOX_PATH/myzshrc_local
 fi
 
-# anyenv
-if [ -d $HOME/.anyenv ]; then
-  export PATH="$HOME/.anyenv/bin:$PATH"
-  eval "$(anyenv init -)"
+# asdf
+if [ $commands[asdf] ]; then
+  . $(brew --prefix asdf)/libexec/asdf.sh
 fi
 
 eval $(/opt/homebrew/bin/brew shellenv)
@@ -66,7 +65,7 @@ if [ $commands[kubectl] ]; then
   autoload -U colors
   colors
   source $(brew --prefix)/etc/zsh-kubectl-prompt/kubectl.zsh
-  RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+  # RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 fi
 
 # peco inc search
