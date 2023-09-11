@@ -28,9 +28,10 @@ if [ -f $DROPBOX_PATH/myzshrc_local ]; then
   source $DROPBOX_PATH/myzshrc_local
 fi
 
-# asdf
-if [ $commands[asdf] ]; then
-  . $(brew --prefix asdf)/libexec/asdf.sh
+# rtx
+if [ $commands[rtx] ]; then
+  eval "$(rtx activate zsh)"
+  . <(rtx completion zsh) && compdef _rtx rtx
 fi
 
 eval $(/opt/homebrew/bin/brew shellenv)

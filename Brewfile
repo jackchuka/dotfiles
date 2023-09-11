@@ -16,7 +16,7 @@ brew "thefuck"
 brew "httpie"
 brew "zsh-completions"
 brew "tree"
-brew "asdf"
+brew "rtx"
 
 # brew "yamllint"
 # brew "spark"
