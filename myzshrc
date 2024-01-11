@@ -29,10 +29,10 @@ fi
 
 #### Custom
 
-# rtx
-if [ $commands[rtx] ]; then
-  eval "$(rtx activate zsh)"
-  . <(rtx completion zsh) && compdef _rtx rtx
+# mise(rtx)
+if [ $commands[mise] ]; then
+  eval "$(mise activate zsh)"
+  . <(mise completion zsh) && compdef _mise mise
 fi
 
 # aliases
