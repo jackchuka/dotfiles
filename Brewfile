@@ -23,11 +23,11 @@ brew "mise"
 # brew "mycli"
 
 ## kubernetes
-brew "kubectx"
-tap "johanhaleby/kubetail"
-brew "kubetail"
-tap "superbrothers/zsh-kubectl-prompt"
-brew "zsh-kubectl-prompt"
+# brew "kubectx"
+# tap "johanhaleby/kubetail"
+# brew "kubetail"
+# tap "superbrothers/zsh-kubectl-prompt"
+# brew "zsh-kubectl-prompt"
 
 ## languages
 # brew "go"
@@ -35,11 +35,10 @@ brew "zsh-kubectl-prompt"
 # brew "php"
 
 ## Applications
-cask 'authy'
 cask 'iterm2'
 cask 'slack'
 cask 'alfred'
-cask 'spectacle'
+cask 'bettertouchtool'
 cask 'dropbox'
 cask 'google-chrome'
 cask 'google-japanese-ime'
@@ -58,7 +57,6 @@ cask 'visual-studio-code'
 # cask 'keycastr'
 # cask 'onedrive'
 # cask 'google-cloud-sdk'
-# cask 'bettertouchtool'
 # cask 'intellij-idea'
 # cast 'ngrok'
 # cask 'mockoon'
