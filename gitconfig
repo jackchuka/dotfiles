@@ -11,7 +11,7 @@
 	# clean merged local branch
 	cleanup = !git branch --merged | grep  -v '\\*\\|master\\|main\\|develop' | xargs -n 1 git branch -d
 	# checkout with incremental serach, require peco
-	ch = !git branch -a --sort=-authordate | cut -b 3- | perl -pe "s#^remotes/origin/###" | perl -nlE 'say if !$c{$_}++' | grep -v -- '->' | peco | xargs git checkout
+	ch = !git branch -a | perl -nlE 'say if !$c{$_}++' | grep -v -- '->' | peco | cut -b 3- | xargs git checkout
 	# list and checkout PRs on GitHub
 	pr = ! gh pr checkout $(gh pr list | peco | awk '{ print $1 }')
 	# show pr preview
