@@ -99,6 +99,11 @@ if [ $commands[tree] ]; then
   alias t="tree -C"
 fi
 
+# rust
+if [ -f $HOME/.cargo/env ]; then
+  . "$HOME/.cargo/env"
+fi
+
 # gcloud
 if [ $commands[gcloud] ]; then
   export PATH="$HOME/google-cloud-sdk/bin:$PATH"
