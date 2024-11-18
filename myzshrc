@@ -99,6 +99,11 @@ if [ $commands[tree] ]; then
   alias t="tree -C"
 fi
 
+# aqua https://aquaproj.github.io/
+if [ $commands[aqua] ]; then
+  export PATH="$(aqua root-dir)/bin:$PATH"
+fi
+
 # rust
 if [ -f $HOME/.cargo/env ]; then
   . "$HOME/.cargo/env"

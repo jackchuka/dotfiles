@@ -17,6 +17,7 @@ brew "httpie"
 brew "zsh-completions"
 brew "tree"
 brew "mise"
+brew "aqua"
 
 # brew "yamllint"
 # brew "spark"
