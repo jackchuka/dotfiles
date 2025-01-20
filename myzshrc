@@ -66,26 +66,26 @@ if [ $commands[kubectl] ]; then
   fi
 fi
 
-# peco inc search
-function peco-history-selection() {
-  BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | peco)
+# fzf inc search
+function fzf-history-selection() {
+  BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | fzf)
   CURSOR=$#BUFFER
   zle reset-prompt
 }
-zle -N peco-history-selection
-bindkey '^R' peco-history-selection
+zle -N fzf-history-selection
+bindkey '^R' fzf-history-selection
 
-# peco ghq
-function peco-src() {
-  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+# fzf ghq
+function fzf-src() {
+  local selected_dir=$(ghq list -p | fzf)
   if [ -n "$selected_dir" ]; then
     BUFFER="cd ${selected_dir}"
     zle accept-line
   fi
   zle clear-screen
 }
-zle -N peco-src
-bindkey '^]' peco-src
+zle -N fzf-src
+bindkey '^]' fzf-src
 
 if [ $commands[thefuck] ]; then
   eval $(thefuck --alias)
@@ -97,6 +97,10 @@ fi
 
 if [ $commands[tree] ]; then
   alias t="tree -C"
+fi
+
+if [ $commands[zoxide] ]; then
+  eval "$(zoxide init zsh)"
 fi
 
 # aqua https://aquaproj.github.io/
