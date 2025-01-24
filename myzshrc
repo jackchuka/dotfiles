@@ -66,6 +66,7 @@ if [ $commands[kubectl] ]; then
   fi
 fi
 
+export FZF_DEFAULT_OPTS='--height 60% --reverse --border'
 # fzf inc search
 function fzf-history-selection() {
   BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | fzf)
