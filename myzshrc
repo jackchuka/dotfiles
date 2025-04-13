@@ -32,7 +32,7 @@ fi
 # mise(rtx)
 if [ $commands[mise] ]; then
   eval "$(mise activate zsh)"
-  . <(mise completion zsh) && compdef _mise mise
+  # . <(mise completion zsh) && compdef _mise mise
 fi
 
 # aliases
@@ -48,7 +48,7 @@ alias gam="git commit -am"
 
 # kubernetes
 if [ $commands[kubectl] ]; then
-  source <(kubectl completion zsh)
+  # source <(kubectl completion zsh)
   alias k="kubectl"
   alias kg="k get"
   alias kgpo="kg pod"
@@ -106,6 +106,7 @@ fi
 
 # aqua https://aquaproj.github.io/
 if [ $commands[aqua] ]; then
+  export AQUA_GLOBAL_CONFIG=${AQUA_GLOBAL_CONFIG:-}:${XDG_CONFIG_HOME:-$HOME/.config}/aquaproj-aqua/aqua.yaml
   export PATH="$(aqua root-dir)/bin:$PATH"
 fi
 
