@@ -46,6 +46,11 @@ alias gd="git diff --color-words"
 alias gc="git cleanup"
 alias gam="git commit -am"
 
+gss() {
+  local idx=${1:-0}
+  git stash show "stash@{$idx}" -p --color-words
+}
+
 # kubernetes
 if [ $commands[kubectl] ]; then
   # source <(kubectl completion zsh)
