@@ -74,7 +74,10 @@ fi
 export FZF_DEFAULT_OPTS='--height 60% --reverse --border'
 # fzf inc search
 function fzf-history-selection() {
-  BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | fzf)
+  BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | \
+  fzf --ansi \
+      --preview-window=wrap \
+      --preview='printf "%s\n" {} | bat --language=zsh --color=always --style=plain')
   CURSOR=$#BUFFER
   zle reset-prompt
 }
