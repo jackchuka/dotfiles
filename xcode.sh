@@ -2,5 +2,9 @@
 echo "Installing xcode..."
 
 if command_exists xcode-select; then
-	xcode-select --install
+	if xcode-select -p >/dev/null 2>&1; then
+		echo "Xcode Command Line Tools already installed"
+	else
+		xcode-select --install
+	fi
 fi

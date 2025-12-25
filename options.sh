@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 select_option() {
 	ESC=$(printf "\033")

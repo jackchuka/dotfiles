@@ -11,29 +11,40 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:/usr/local/opt/mysql-client/bin
 
-if [ $commands[yarn] ]; then
-  export PATH="$PATH:$(yarn global bin)"
+has() {
+	command -v "$1" >/dev/null 2>&1
+}
+
+if has yarn; then
+	export PATH="$PATH:$(yarn global bin)"
 fi
 
 # sync HISTFILE
-if [ -d $DROPBOX_PATH ]; then
-  export HISTFILE=$DROPBOX_PATH/zhistory
+if [ -d "$DROPBOX_PATH" ]; then
+	export HISTFILE=$DROPBOX_PATH/zhistory
 fi
 
-eval $(/opt/homebrew/bin/brew shellenv)
-if type brew &>/dev/null; then
-  export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+if [ -x /opt/homebrew/bin/brew ]; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+	eval "$(/usr/local/bin/brew shellenv)"
+elif has brew; then
+	eval "$(brew shellenv)"
+fi
 
-  autoload -Uz compinit
-  compinit -u
+if has brew; then
+	export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+	autoload -Uz compinit
+	compinit -u
 fi
 
 #### Custom
 
 # mise(rtx)
-if [ $commands[mise] ]; then
-  eval "$(mise activate zsh)"
-  # . <(mise completion zsh) && compdef _mise mise
+if has mise; then
+	eval "$(mise activate zsh)"
+	# . <(mise completion zsh) && compdef _mise mise
 fi
 
 # aliases
@@ -48,104 +59,108 @@ alias gc="git cleanup"
 alias gam="git commit -am"
 
 gss() {
-  local idx=${1:-0}
-  git stash show "stash@{$idx}" -p --color-words
+	local idx=${1:-0}
+	git stash show "stash@{$idx}" -p --color-words
 }
 
 # kubernetes
-if [ $commands[kubectl] ]; then
-  # source <(kubectl completion zsh)
-  alias k="kubectl"
-  alias kg="k get"
-  alias kgpo="kg pod"
-  alias kl="kubetail"
-  alias kc="kubectx"
-  alias kn="kubens"
+if has kubectl; then
+	# source <(kubectl completion zsh)
+	alias k="kubectl"
+	alias kg="k get"
+	alias kgpo="kg pod"
+	alias kl="kubetail"
+	alias kc="kubectx"
+	alias kn="kubens"
 
-  autoload -U colors
-  colors
-  source $(brew --prefix)/etc/zsh-kubectl-prompt/kubectl.zsh
-  # RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+	autoload -U colors
+	colors
+	if has brew; then
+		source "$(brew --prefix)/etc/zsh-kubectl-prompt/kubectl.zsh"
+	fi
+	# RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 
-  if [ -d $DROOPBOX_PATH ]; then
-    export KUBECONFIG=$DROPBOX_PATH/kubeconfig
-  fi
+	if [ -d "$DROPBOX_PATH" ]; then
+		export KUBECONFIG=$DROPBOX_PATH/kubeconfig
+	fi
 fi
 
-if [ $commands[k9s] ]; then
-  alias k9="k9s --readonly"
+if has k9s; then
+	alias k9="k9s --readonly"
 fi
 
 export FZF_DEFAULT_OPTS='--height 60% --reverse --border'
 # fzf inc search
 function fzf-history-selection() {
-  BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | \
-  fzf --ansi \
-      --preview-window=wrap \
-      --preview='printf "%s\n" {} | bat --language=zsh --color=always --style=plain')
-  CURSOR=$#BUFFER
-  zle reset-prompt
+	BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' |
+		fzf --ansi \
+			--preview-window=wrap \
+			--preview='printf "%s\n" {} | bat --language=zsh --color=always --style=plain')
+	CURSOR=$#BUFFER
+	zle reset-prompt
 }
 zle -N fzf-history-selection
 bindkey '^R' fzf-history-selection
 
 # fzf ghq
 function fzf-src() {
-  local selected_dir=$(ghq list -p | fzf)
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
-    zle accept-line
-  fi
-  zle clear-screen
+	local selected_dir=$(ghq list -p | fzf)
+	if [ -n "$selected_dir" ]; then
+		BUFFER="cd ${selected_dir}"
+		zle accept-line
+	fi
+	zle clear-screen
 }
 zle -N fzf-src
 bindkey '^]' fzf-src
 
-if [ $commands[thefuck] ]; then
-  eval $(thefuck --alias)
+if has thefuck; then
+	eval "$(thefuck --alias)"
 fi
 
-if [ $commands[direnv] ]; then
-  eval "$(direnv hook zsh)"
+if has direnv; then
+	eval "$(direnv hook zsh)"
 fi
 
-if [ $commands[tree] ]; then
-  alias t="tree -C"
+if has tree; then
+	alias t="tree -C"
 fi
 
-if [ $commands[zoxide] ]; then
-  eval "$(zoxide init zsh)"
+if has zoxide; then
+	eval "$(zoxide init zsh)"
 fi
 
 # aqua https://aquaproj.github.io/
-if [ $commands[aqua] ]; then
-  export AQUA_GLOBAL_CONFIG=${AQUA_GLOBAL_CONFIG:-}:${XDG_CONFIG_HOME:-$HOME/.config}/aquaproj-aqua/aqua.yaml
-  export PATH="$(aqua root-dir)/bin:$PATH"
+if has aqua; then
+	export AQUA_GLOBAL_CONFIG=${AQUA_GLOBAL_CONFIG:-}:${XDG_CONFIG_HOME:-$HOME/.config}/aquaproj-aqua/aqua.yaml
+	export PATH="$(aqua root-dir)/bin:$PATH"
 fi
 
 # rust
 if [ -f $HOME/.cargo/env ]; then
-  . "$HOME/.cargo/env"
+	. "$HOME/.cargo/env"
 fi
 
 # gcloud
-if [ $commands[gcloud] ]; then
-  export PATH="$HOME/google-cloud-sdk/bin:$PATH"
-  source $(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-  source $(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+if has gcloud; then
+	export PATH="$HOME/google-cloud-sdk/bin:$PATH"
+	if has brew; then
+		source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+		source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+	fi
 fi
 
 # 1password
-if [ $commands[op] ]; then
-  eval "$(op completion zsh)"
-  compdef _op op
+if has op; then
+	eval "$(op completion zsh)"
+	compdef _op op
 fi
 
 export GPG_TTY=$(tty)
 
 # source local rc
 if [ -f $DROPBOX_PATH/myzshrc_local ]; then
-  source $DROPBOX_PATH/myzshrc_local
+	source "$DROPBOX_PATH/myzshrc_local"
 fi
 
 ### end of myzshrc

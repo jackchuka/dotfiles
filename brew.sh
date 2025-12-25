@@ -6,7 +6,7 @@ if ! command_exists brew; then
 fi
 
 # install all brew packages
-if [ -e $start_dir/Brewfile ] && command_exists brew; then
+if [ -f "$start_dir/Brewfile" ] && command_exists brew; then
 	brew tap Homebrew/bundle
-	brew bundle
+	brew bundle --file "$start_dir/Brewfile"
 fi

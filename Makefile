@@ -1,13 +1,13 @@
-OPTIONS := xcode brew dir git mas zsh
+OPTIONS := all xcode brew ssh directories gitconfig mas zsh prezto
 .DEFAULT_GOAL := help
 
 list: ## List all options available
 	@$(foreach option, $(OPTIONS), echo $(option);)
 
-install: ## Run intractive installer
+install: ## Run interactive installer
 	@$(PWD)/install.sh
 
-all: ## Run all setup 
+all: ## Run all setup
 	@$(PWD)/install.sh all
 
 help: ## Show this help

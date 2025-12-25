@@ -12,6 +12,8 @@ A super lazy programmer's dotfiles, although it's more like a setup script for t
 
 * Sets `.gitconfig` and `.gitignore_global`
 
+* Creates `~/.ssh/config`
+
 * Creates directories in `directories`
 
 ## Get Started
@@ -27,7 +29,7 @@ $ make install
 ```javascript
 all                            Run all setup
 help                           Show this help
-install                        Run intractive installer
+install                        Run interactive installer
 list                           List all options available
 ```
 
@@ -42,6 +44,10 @@ Installs Xcode Command Line Tools
 #### [brew](https://brew.sh/)
 
 Installs brew itself and packages specified in `Brewfile`
+
+#### ssh
+
+Creates `~/.ssh/config` (adds an `Include` entry)
 
 #### directories
 

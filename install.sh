@@ -1,11 +1,27 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 command_exists() {
-	type "$1" >/dev/null
+	command -v "$1" >/dev/null 2>&1
 }
 
-echoval() {
-	echo "$(eval echo $(cat $1))"
+script_dir() {
+	CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd
+}
+
+clean_list_file() {
+	local file="$1"
+	[ -f "$file" ] || return 0
+	sed -e 's/#.*$//' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e '/^$/d' "$file"
+}
+
+expand_home_path() {
+	local path="$1"
+	path="${path//\$HOME/$HOME}"
+	case "$path" in
+	"~") path="$HOME" ;;
+	"~/"*) path="$HOME/${path#~/}" ;;
+	esac
+	printf '%s\n' "$path"
 }
 
 run_all() {
@@ -21,13 +37,13 @@ run_all() {
 	. "$start_dir/gitconfig.sh"
 	# shellcheck source=./mas.sh
 	. "$start_dir/mas.sh"
-	# shellcheck source=./zsh.sh
-	. "$start_dir/zsh.sh"
 	# shellcheck source=./prezto.sh
 	. "$start_dir/prezto.sh"
+	# shellcheck source=./zsh.sh
+	. "$start_dir/zsh.sh"
 }
 
-start_dir=$(pwd)
+start_dir="$(script_dir)"
 # shellcheck source=./options.sh
 . "$start_dir/options.sh"
 
@@ -46,12 +62,10 @@ while true; do
 	echo ""
 	echo "> Select one option using up/down keys and enter to confirm:"
 	echo ""
-	# shellcheck disable=SC2039
 	options=("all" "xcode" "brew" "ssh" "directories" "gitconfig" "mas" "zsh" "prezto" "exit")
 
 	select_option "${options[@]}"
 	choice=$?
-	# shellcheck disable=SC2039
 	option=${options[$choice]}
 	echo "Executing \"$option\" ..."
 
