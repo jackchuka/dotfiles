@@ -29,6 +29,7 @@ brew "fzf"
 # tap "johanhaleby/kubetail"
 # brew "kubetail"
 # tap "superbrothers/zsh-kubectl-prompt"
+# brew "derailed/k9s/k9s"
 # brew "zsh-kubectl-prompt"
 
 ## languages

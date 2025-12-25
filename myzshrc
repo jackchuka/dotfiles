@@ -8,6 +8,7 @@ export VISUAL=vim
 export DROPBOX_PATH=$HOME/Dropbox/sync
 export GOPATH=$HOME/dev
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:/usr/local/opt/mysql-client/bin
 
 if [ $commands[yarn] ]; then
@@ -69,6 +70,10 @@ if [ $commands[kubectl] ]; then
   if [ -d $DROOPBOX_PATH ]; then
     export KUBECONFIG=$DROPBOX_PATH/kubeconfig
   fi
+fi
+
+if [ $commands[k9s] ]; then
+  alias k9="k9s --readonly"
 fi
 
 export FZF_DEFAULT_OPTS='--height 60% --reverse --border'
