@@ -4,17 +4,15 @@ A super lazy programmer's dotfiles, although it's more like a setup script for t
 
 ## Features
 
-* Installs brew packages via `Brewfile`
+- Installs brew packages via `Brewfile`
 
-* Installs AppStore apps via `masfile`
+- Downloads `zsh` and `prezto`
 
-* Downloads `zsh` and `prezto`
+- Sets `.gitconfig` and `.gitignore_global`
 
-* Sets `.gitconfig` and `.gitignore_global`
+- Creates `~/.ssh/config`
 
-* Creates `~/.ssh/config`
-
-* Creates directories in `directories`
+- Creates directories in `directories`
 
 ## Get Started
 
@@ -57,13 +55,15 @@ Creates directories in `directories` file
 
 Creates symlinks to $HOME directory
 
-* `gitconfig` -> `$HOME/.gitconfig`
+- `gitconfig` -> `$HOME/.gitconfig`
 
-* `gitignore_global` -> `$HOME/.gitignore_global`
+- `gitignore_global` -> `$HOME/.gitignore_global`
 
-#### [mas](https://github.com/mas-cli/mas)
+#### aerospace
 
-Install mas packages specified in `masfile`
+Setups aerospace config symlinks
+
+- `aerospace.toml` -> `$HOME/.config/aerospace/aerospace.toml`
 
 #### zsh
 

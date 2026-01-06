@@ -10,8 +10,6 @@ brew "jq"
 brew "tldr"
 brew "ssh-copy-id"
 brew "bat"
-brew "mas"
-brew "thefuck"
 brew "httpie"
 brew "zsh-completions"
 brew "tree"
@@ -20,6 +18,7 @@ brew "aqua"
 brew "zoxide"
 brew "fzf"
 
+# brew "thefuck"
 # brew "yamllint"
 # brew "spark"
 # brew "mycli"
@@ -38,19 +37,20 @@ brew "fzf"
 # brew "php"
 
 ## Applications
+cask 'aerospace'
 cask 'iterm2'
 cask 'slack'
 cask 'alfred'
-cask 'bettertouchtool'
 cask 'dropbox'
 cask 'google-chrome'
 cask 'google-japanese-ime'
 
 ## Development Applications
-cask 'dash'
 cask 'docker'
 cask 'visual-studio-code'
 
+# cask 'dash'
+# cask 'bettertouchtool'
 # cask 'sequel-ace'
 # cask 'pgadmin4'
 # cask 'mongodb-compass'
