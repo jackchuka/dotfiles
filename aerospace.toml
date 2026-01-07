@@ -72,7 +72,7 @@ inner.vertical = 5
 outer.left = 5
 outer.bottom = 5
 outer.top = 5
-outer.right = 5
+outer.right = [{ monitor.main = 130 }, 5]
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
