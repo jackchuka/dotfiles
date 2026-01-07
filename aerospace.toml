@@ -206,3 +206,9 @@ run = ['move-node-to-workspace 2']
 if.app-id = 'com.google.Chrome'
 if.during-aerospace-startup = true
 run = ['move-node-to-workspace M']
+
+# Workaround for Ghostty terminal emulator that uses MacOS native tab
+# https://ghostty.org/docs/help/macos-tiling-wms
+[[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
+run = ["layout floating"]
