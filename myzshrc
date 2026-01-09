@@ -47,7 +47,7 @@ if has mise; then
 	# . <(mise completion zsh) && compdef _mise mise
 fi
 
-# aliases
+# Git
 alias gp="git pull"
 alias gpo="git pb"
 alias grpo="gm && gpo && git remote prune origin"
@@ -62,6 +62,10 @@ gss() {
 	local idx=${1:-0}
 	git stash show "stash@{$idx}" -p --color-words
 }
+
+if has git-wt; then
+	eval "$(git wt --init zsh)"
+fi
 
 # kubernetes
 if has kubectl; then

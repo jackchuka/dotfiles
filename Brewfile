@@ -2,6 +2,7 @@ cask_args appdir: "/Applications"
 
 ## commands
 brew "git"
+brew "k1LoW/tap/git-wt"
 brew "gh"
 brew "ghq"
 brew "gpg"
