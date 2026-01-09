@@ -37,6 +37,8 @@ run_all() {
 	. "$start_dir/gitconfig.sh"
 	# shellcheck source=./aerospace.sh
 	. "$start_dir/aerospace.sh"
+	# shellcheck source=./ghostty.sh
+	. "$start_dir/ghostty.sh"
 	# shellcheck source=./prezto.sh
 	. "$start_dir/prezto.sh"
 	# shellcheck source=./zsh.sh
@@ -62,7 +64,7 @@ while true; do
 	echo ""
 	echo "> Select one option using up/down keys and enter to confirm:"
 	echo ""
-	options=("all" "xcode" "brew" "ssh" "directories" "gitconfig" "aerospace" "zsh" "prezto" "exit")
+	options=("all" "xcode" "brew" "ssh" "directories" "gitconfig" "aerospace" "ghostty" "zsh" "prezto" "exit")
 
 	select_option "${options[@]}"
 	choice=$?
