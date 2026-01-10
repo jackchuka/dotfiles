@@ -82,3 +82,7 @@ shell-integration-features = no-cursor
 #macos-titlebar-style = tabs
 macos-option-as-alt = true
 window-save-state = always
+scrollback-limit = 4294967295
+
+auto-update-channel = tip
+

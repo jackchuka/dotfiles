@@ -8,7 +8,6 @@ brew "ghq"
 brew "gpg"
 brew "zsh"
 brew "jq"
-brew "tldr"
 brew "ssh-copy-id"
 brew "bat"
 brew "httpie"
@@ -18,6 +17,10 @@ brew "mise"
 brew "aqua"
 brew "zoxide"
 brew "fzf"
+
+## Utilities
+brew "tldr"
+brew "duti" # for set default applications
 
 # brew "thefuck"
 # brew "yamllint"
