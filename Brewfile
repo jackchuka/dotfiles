@@ -17,6 +17,7 @@ brew "mise"
 brew "aqua"
 brew "zoxide"
 brew "fzf"
+brew "ni"
 
 ## Utilities
 brew "tldr"
