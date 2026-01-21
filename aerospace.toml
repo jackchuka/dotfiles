@@ -46,7 +46,7 @@ automatically-unhide-macos-hidden-apps = true
 # even when they are invisible.
 # This config version is only available since 'config-version = 2'
 # Fallback value (if you omit the key): persistent-workspaces = []
-persistent-workspaces = ['M', 'T', 'C', 'D', '1', '2', '3', '4', '0']
+persistent-workspaces = ['M', 'N', 'T', 'C', 'D', '1', '2', '3', '4', '0']
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -129,6 +129,7 @@ alt-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-m = 'workspace M'
+alt-n = 'workspace N'
 alt-t = 'workspace T'
 alt-c = 'workspace C'
 alt-d = 'workspace D'
@@ -141,6 +142,7 @@ alt-0 = 'workspace 0'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-m = ['move-node-to-workspace M', 'workspace M']
+alt-shift-n = ['move-node-to-workspace N', 'workspace N']
 alt-shift-t = ['move-node-to-workspace T', 'workspace T']
 alt-shift-c = ['move-node-to-workspace C', 'workspace C']
 alt-shift-d = ['move-node-to-workspace D', 'workspace D']
@@ -192,26 +194,6 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
-
-[[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
-if.during-aerospace-startup = true
-run = ['move-node-to-workspace T']
-
-[[on-window-detected]]
-if.app-id = 'com.microsoft.VSCode'
-if.during-aerospace-startup = true
-run = ['move-node-to-workspace D']
-
-[[on-window-detected]]
-if.app-id = 'com.tinyspeck.slackmacgap'
-if.during-aerospace-startup = true
-run = ['move-node-to-workspace 2']
-
-[[on-window-detected]]
-if.app-id = 'com.google.Chrome'
-if.during-aerospace-startup = true
-run = ['move-node-to-workspace M']
 
 # Workaround for Ghostty terminal emulator that uses MacOS native tab
 # https://ghostty.org/docs/help/macos-tiling-wms

@@ -3,6 +3,7 @@
 .idea/
 node_modules/
 .claude/settings.local.json
+.claude/plans/
 .auto-claude/
 .claude_settings.json
 .worktrees/
