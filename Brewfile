@@ -42,13 +42,18 @@ brew "duti" # for set default applications
 # brew "php"
 
 ## Applications
-cask 'aerospace'
 cask 'iterm2'
 cask 'slack'
 cask 'alfred'
 cask 'dropbox'
 cask 'google-chrome'
 cask 'google-japanese-ime'
+
+## Utilities Applications
+cask 'aerospace'
+cask "voiceink"
+cask "cleanshot"
+cask "homerow"
 
 ## Development Applications
 cask 'docker'
