@@ -2,7 +2,7 @@
 
 ###  myzshrc
 
-export EDITOR=vim
+export EDITOR=code
 export VISUAL=vim
 
 export DROPBOX_PATH=$HOME/Dropbox/sync
@@ -10,6 +10,9 @@ export GOPATH=$HOME/dev
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:/usr/local/opt/mysql-client/bin
+
+# gogcli https://github.com/steipete/gogcli
+export GOG_ENABLE_COMMANDS=calendar
 
 has() {
 	command -v "$1" >/dev/null 2>&1
@@ -48,23 +51,25 @@ if has mise; then
 fi
 
 # Git
-alias gp="git pull"
-alias gpo="git pb"
-alias grpo="gm && gpo && git remote prune origin"
-alias gm='git checkout "$(git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4)"'
-alias gamend="git add . && git commit --amend --no-edit"
-alias gs="git status"
-alias gd="git diff --color-words"
-alias gc="git cleanup"
-alias gam="git commit -am"
+if has git; then
+	alias gp="git pull"
+	alias gpo="git pb"
+	alias grpo="gm && gpo && git remote prune origin"
+	alias gm='git checkout "$(git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4)"'
+	alias gamend="git add . && git commit --amend --no-edit"
+	alias gs="git status"
+	alias gd="git diff --color-words"
+	alias gc="git cleanup"
+	alias gam="git commit -am"
 
-gss() {
-	local idx=${1:-0}
-	git stash show "stash@{$idx}" -p --color-words
-}
+	gss() {
+		local idx=${1:-0}
+		git stash show "stash@{$idx}" -p --color-words
+	}
 
-if has git-wt; then
-	eval "$(git wt --init zsh)"
+	if has git-wt; then
+		eval "$(git wt --init zsh)"
+	fi
 fi
 
 # kubernetes

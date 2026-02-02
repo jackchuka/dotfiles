@@ -22,6 +22,7 @@ brew "ni"
 ## Utilities
 brew "tldr"
 brew "duti" # for set default applications
+brew "steipete/tap/gogcli"
 
 # brew "thefuck"
 # brew "yamllint"
