@@ -63,6 +63,10 @@ font-thicken
 # Keybind
 #keybind = cmd+f=search:Ghostty
 keybind = shift+enter=text:\x1b\r
+# keybind = ctrl+h=goto_split:left
+# keybind = ctrl+j=goto_split:bottom	
+# keybind = ctrl+k=goto_split:top
+# keybind = ctrl+l=goto_split:right
 
 # Window Settings
 #macos-titlebar-style = "transparent"
@@ -76,7 +80,7 @@ background-opacity = 0.9
 # Cursor
 cursor-style = block
 cursor-style-blink = false
-shell-integration-features = no-cursor
+shell-integration = none
 
 #
 #macos-titlebar-style = tabs
