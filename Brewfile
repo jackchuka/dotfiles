@@ -18,6 +18,7 @@ brew "aqua"
 brew "zoxide"
 brew "fzf"
 brew "ni"
+brew "unvalley/tap/rt"
 
 ## Utilities
 brew "tldr"

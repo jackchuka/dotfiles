@@ -11,9 +11,6 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:/usr/local/opt/mysql-client/bin
 
-# gogcli https://github.com/steipete/gogcli
-export GOG_ENABLE_COMMANDS=calendar
-
 has() {
 	command -v "$1" >/dev/null 2>&1
 }
