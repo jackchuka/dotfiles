@@ -41,6 +41,9 @@ fi
 
 #### Custom
 
+# claude
+alias yolo="claude --dangerously-skip-permissions"
+
 # mise(rtx)
 if has mise; then
 	eval "$(mise activate zsh)"
