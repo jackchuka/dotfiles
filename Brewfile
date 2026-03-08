@@ -46,7 +46,8 @@ brew "steipete/tap/gogcli"
 ## Applications
 cask 'iterm2'
 cask 'slack'
-cask 'alfred'
+# cask 'alfred'
+cask 'raycast'
 cask 'dropbox'
 cask 'google-chrome'
 cask 'google-japanese-ime'
