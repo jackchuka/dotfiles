@@ -37,12 +37,11 @@ if has brew; then
 
 	autoload -Uz compinit
 	compinit -u
+
+	source "$(brew --prefix)/share/zsh-abbr/zsh-abbr.zsh"
 fi
 
 #### Custom
-
-# claude
-alias yolo="claude --dangerously-skip-permissions"
 
 # mise(rtx)
 if has mise; then
@@ -52,16 +51,6 @@ fi
 
 # Git
 if has git; then
-	alias gp="git pull"
-	alias gpo="git pb"
-	alias grpo="gm && gpo && git remote prune origin"
-	alias gm='git checkout "$(git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4)"'
-	alias gamend="git add . && git commit --amend --no-edit"
-	alias gs="git status"
-	alias gd="git diff --color-words"
-	alias gc="git cleanup"
-	alias gam="git commit -am"
-
 	gss() {
 		local idx=${1:-0}
 		git stash show "stash@{$idx}" -p --color-words
@@ -75,13 +64,6 @@ fi
 # kubernetes
 if has kubectl; then
 	# source <(kubectl completion zsh)
-	alias k="kubectl"
-	alias kg="k get"
-	alias kgpo="kg pod"
-	alias kl="kubetail"
-	alias kc="kubectx"
-	alias kn="kubens"
-
 	autoload -U colors
 	colors
 	if has brew; then
@@ -92,10 +74,6 @@ if has kubectl; then
 	if [ -d "$DROPBOX_PATH" ]; then
 		export KUBECONFIG=$DROPBOX_PATH/kubeconfig
 	fi
-fi
-
-if has k9s; then
-	alias k9="k9s --readonly"
 fi
 
 export FZF_DEFAULT_OPTS='--height 60% --reverse --border'
@@ -131,9 +109,6 @@ if has direnv; then
 	eval "$(direnv hook zsh)"
 fi
 
-if has tree; then
-	alias t="tree -C"
-fi
 
 if has zoxide; then
 	eval "$(zoxide init zsh)"

@@ -43,6 +43,8 @@ run_all() {
 	. "$start_dir/prezto.sh"
 	# shellcheck source=./zsh.sh
 	. "$start_dir/zsh.sh"
+	# shellcheck source=./abbr.sh
+	. "$start_dir/abbr.sh"
 }
 
 start_dir="$(script_dir)"
@@ -64,7 +66,7 @@ while true; do
 	echo ""
 	echo "> Select one option using up/down keys and enter to confirm:"
 	echo ""
-	options=("all" "xcode" "brew" "ssh" "directories" "gitconfig" "aerospace" "ghostty" "zsh" "prezto" "exit")
+	options=("all" "xcode" "brew" "ssh" "directories" "gitconfig" "aerospace" "ghostty" "zsh" "prezto" "abbr" "exit")
 
 	select_option "${options[@]}"
 	choice=$?
