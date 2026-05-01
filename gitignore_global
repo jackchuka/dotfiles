@@ -2,8 +2,11 @@
 .DS_Store
 .idea/
 node_modules/
+.superset/
 .claude/settings.local.json
 .claude/plans/
+.claude/worktrees/
+docs/superpowers/
 .auto-claude/
 .claude_settings.json
 .worktrees/

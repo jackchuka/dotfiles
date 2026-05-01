@@ -9,12 +9,10 @@ abbr -f t="tree -C"
 
 abbr -f gp="git pull"
 abbr -f gpo="git pb"
-abbr -f grpo="gm && gpo && git remote prune origin"
 abbr -f gm="git checkout \"\$(git symbolic-ref refs/remotes/origin/HEAD | cut -d\"/\" -f4)\""
 abbr -f gamend="git add . && git commit --amend --no-edit"
 abbr -f gs="git status"
 abbr -f gd="git diff --color-words"
-abbr -f gam="git commit -am"
 
 abbr -f k="kubectl"
 abbr -f kg="kubectl get"
