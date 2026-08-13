@@ -2,7 +2,6 @@ cask_args appdir: "/Applications"
 
 ## commands
 brew "git"
-brew "k1LoW/tap/git-wt"
 brew "gh"
 brew "ghq"
 brew "gpg"
@@ -23,8 +22,7 @@ brew "unvalley/tap/rt"
 
 ## Utilities
 brew "tldr"
-brew "duti" # for set default applications
-brew "steipete/tap/gogcli"
+# brew "steipete/tap/gogcli"
 
 # brew "thefuck"
 # brew "yamllint"
@@ -45,8 +43,8 @@ brew "steipete/tap/gogcli"
 # brew "php"
 
 ## Applications
-cask 'iterm2'
-cask 'slack'
+# cask 'iterm2'
+# cask 'slack'
 # cask 'alfred'
 cask 'raycast'
 cask 'dropbox'
@@ -60,7 +58,7 @@ cask "cleanshot"
 cask "homerow"
 
 ## Development Applications
-cask 'docker'
+# cask 'docker'
 cask 'visual-studio-code'
 
 # cask 'dash'
