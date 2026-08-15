@@ -23,7 +23,7 @@ brew "jackchuka/tap/git-customs"
 brew "jackchuka/tap/ccli"
 
 ## Utilities
-brew "tldr"
+brew "tlrc"
 # brew "steipete/tap/gogcli"
 
 brew "mise"
@@ -59,7 +59,7 @@ cask 'grammarly-desktop'
 cask 'aerospace'
 cask "voiceink"
 cask "cleanshot"
-cask "homerow"
+cask "mouseless"
 
 ## Development Applications
 # cask 'docker'
