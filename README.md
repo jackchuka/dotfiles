@@ -39,15 +39,19 @@ Override the clone location with `DOTFILES_DIR=...`.
 
 ```sh
 $ git clone https://github.com/jackchuka/dotfiles.git
-$ cd dotfiles && chmod 755 install.sh
+$ cd dotfiles
 $ make install
 ```
 
 </details>
 
+Config files are symlinked back to this checkout, so moving or renaming the
+directory afterwards breaks them. Anything already at a target path is moved
+aside to `<name>.backup` first.
+
 ### Available Commands
 
-```javascript
+```
 all                            Run all setup
 help                           Show this help
 install                        Run interactive installer
@@ -88,12 +92,26 @@ Setups aerospace config symlinks
 
 - `aerospace.toml` -> `$HOME/.config/aerospace/aerospace.toml`
 
-#### zsh
+#### [ghostty](https://ghostty.org/)
 
-Install zsh and set default shell to zsh
+Setups Ghostty config symlink
 
-It will also source `myzshrc` in `.zshrc`
+- `ghostty` -> `$XDG_CONFIG_HOME/ghostty/config`
 
 #### [prezto](https://github.com/sorin-ionescu/prezto)
 
 Downloads prezto and updates `zpreztorc`
+
+Runcoms are symlinked from the clone, except `.zshrc` and `.zpreztorc`, which
+are real files copied out of it. Tool installers append to `.zshrc`, and the
+clone is third party — anything written there is unversioned and lost on update.
+
+#### zsh
+
+Install zsh and set default shell to zsh
+
+Owns `$HOME/.zshrc`, loading prezto and then `myzshrc` from it
+
+#### [abbr](https://github.com/olets/zsh-abbr)
+
+Registers zsh-abbr abbreviations (git, kubectl, and friends)
