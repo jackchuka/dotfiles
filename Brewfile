@@ -13,20 +13,23 @@ brew "bat"
 brew "httpie"
 brew "zsh-completions"
 brew "tree"
-brew "mise"
-brew "aqua"
 brew "zoxide"
 brew "fzf"
 brew "ni"
 brew "unvalley/tap/rt"
+brew "pinentry-mac"
+brew "gitleaks"
+brew "jackchuka/tap/git-customs"
+brew "jackchuka/tap/ccli"
 
 ## Utilities
 brew "tldr"
 # brew "steipete/tap/gogcli"
 
+brew "mise"
+# brew "aqua"
 # brew "thefuck"
 # brew "yamllint"
-# brew "spark"
 # brew "mycli"
 
 ## kubernetes
@@ -52,6 +55,7 @@ cask 'google-chrome'
 cask 'google-japanese-ime'
 
 ## Utilities Applications
+cask 'grammarly-desktop'
 cask 'aerospace'
 cask "voiceink"
 cask "cleanshot"
@@ -61,6 +65,7 @@ cask "homerow"
 # cask 'docker'
 cask 'visual-studio-code'
 
+# cask 'herdr'
 # cask 'dash'
 # cask 'bettertouchtool'
 # cask 'sequel-ace'
