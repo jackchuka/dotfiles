@@ -21,10 +21,32 @@ if [ -n "$cmd_zsh" ] && [ "${SHELL:-}" != "$cmd_zsh" ]; then
 	chsh -s "$cmd_zsh"
 fi
 
-# add myzshrc to home zshrc
+# .zshrc has to be a real file we own. Tool installers append to it, and prezto
+# links it into ~/.zprezto, so anything written here would land as an
+# unversioned edit in a third-party clone that git pull overwrites.
 zshrc="$HOME/.zshrc"
-source_line="source \"$start_dir/myzshrc\""
+if [ -L "$zshrc" ]; then
+	case "$(readlink "$zshrc")" in
+	*/.zprezto/*)
+		if [ -e "$zshrc" ] && cp "$zshrc" "$zshrc.owned"; then
+			rm "$zshrc"
+			mv "$zshrc.owned" "$zshrc"
+			echo "migrated $zshrc out of the prezto clone"
+		fi
+		;;
+	esac
+fi
 touch "$zshrc"
+
+# prezto's zshrc runcom is deliberately not linked (see prezto.sh), so its
+# loader lives here instead. It must precede myzshrc, which builds on prezto.
+if ! grep -qF '.zprezto/init.zsh' "$zshrc"; then
+	# shellcheck disable=SC2016  # ZDOTDIR must stay literal, zsh expands it at startup
+	printf '\n%s\n' 'if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi' >>"$zshrc"
+fi
+
 if ! grep -qF "$start_dir/myzshrc" "$zshrc"; then
-	printf '\n%s\n' "$source_line" >>"$zshrc"
+	printf '\n%s\n' "source \"$start_dir/myzshrc\"" >>"$zshrc"
 fi

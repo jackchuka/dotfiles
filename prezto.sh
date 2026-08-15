@@ -15,7 +15,11 @@ else
 
 		setopt EXTENDED_GLOB
 		for rcfile in "$zprefix"/.zprezto/runcoms/^README.md(.N); do
-			target="$zprefix/.${rcfile:t}"
+			name="${rcfile:t}"
+			# .zshrc is owned by zsh.sh and .zpreztorc is copied below. Linking
+			# either would route personal config back into this clone.
+			[[ "$name" == (zshrc|zpreztorc) ]] && continue
+			target="$zprefix/.$name"
 			[[ -L "$target" ]] && continue
 			if [[ -e "$target" ]]; then
 				mv "$target" "$target.backup"
@@ -24,7 +28,19 @@ else
 			ln -s "$rcfile" "$target"
 		done
 
-		preztorc="$zprefix/.zprezto/runcoms/zpreztorc"
+		# Copied, not linked: the edits below are local preferences, and the
+		# clone is a third-party checkout that git pull will overwrite.
+		preztorc="$zprefix/.zpreztorc"
+		if [[ -L "$preztorc" ]]; then
+			if [[ -e "$preztorc" ]] && cp "$preztorc" "$preztorc.owned"; then
+				rm "$preztorc"
+				mv "$preztorc.owned" "$preztorc"
+				echo "migrated $preztorc out of the prezto clone"
+			fi
+		elif [[ ! -e "$preztorc" ]]; then
+			cp "$zprefix/.zprezto/runcoms/zpreztorc" "$preztorc"
+		fi
+
 		sed -i '' "s/theme 'sorin'/theme 'pure'/g" "$preztorc"
 		# Not idempotent: rerunning would append another copy of both modules.
 		if ! grep -q "'syntax-highlighting'" "$preztorc"; then
