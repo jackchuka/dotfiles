@@ -16,11 +16,34 @@ A super lazy programmer's dotfiles, although it's more like a setup script for t
 
 ## Get Started
 
+One line, from a fresh Mac:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/jackchuka/dotfiles/master/bootstrap.sh | bash
+```
+
+It installs the Xcode Command Line Tools if `git` is missing, clones the repo into
+`~/ghq/github.com/jackchuka/dotfiles` (re-running just pulls), and drops you into the
+interactive installer.
+
+To run everything without the menu:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/jackchuka/dotfiles/master/bootstrap.sh | bash -s -- all
+```
+
+Override the clone location with `DOTFILES_DIR=...`.
+
+<details>
+<summary>Manual</summary>
+
 ```sh
 $ git clone https://github.com/jackchuka/dotfiles.git
 $ cd dotfiles && chmod 755 install.sh
 $ make install
 ```
+
+</details>
 
 ### Available Commands
 

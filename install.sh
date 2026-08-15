@@ -51,6 +51,11 @@ start_dir="$(script_dir)"
 # shellcheck source=./options.sh
 . "$start_dir/options.sh"
 
+if [ "${1:-}" = "all" ]; then
+	run_all
+	exit 0
+fi
+
 cat <<"EOF"
  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  
 (___)(___)(___)(___)(___)(___)(___)(___)(___)(___)(___)(___)(___) 
