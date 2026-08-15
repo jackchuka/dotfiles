@@ -44,37 +44,32 @@ link_file() {
 	ln -s "$src" "$dest"
 }
 
+# The one list of steps: execution order for `all`, menu order, and `list`
+# output all derive from it.
+steps=(xcode brew ssh directories gitconfig aerospace ghostty prezto zsh abbr)
+
 run_all() {
-	# shellcheck source=./xcode.sh
-	. "$start_dir/xcode.sh"
-	# shellcheck source=./brew.sh
-	. "$start_dir/brew.sh"
-	# shellcheck source=./ssh.sh
-	. "$start_dir/ssh.sh"
-	# shellcheck source=./directories.sh
-	. "$start_dir/directories.sh"
-	# shellcheck source=./gitconfig.sh
-	. "$start_dir/gitconfig.sh"
-	# shellcheck source=./aerospace.sh
-	. "$start_dir/aerospace.sh"
-	# shellcheck source=./ghostty.sh
-	. "$start_dir/ghostty.sh"
-	# shellcheck source=./prezto.sh
-	. "$start_dir/prezto.sh"
-	# shellcheck source=./zsh.sh
-	. "$start_dir/zsh.sh"
-	# shellcheck source=./abbr.sh
-	. "$start_dir/abbr.sh"
+	local step
+	for step in "${steps[@]}"; do
+		# shellcheck disable=SC1090
+		. "$start_dir/$step.sh"
+	done
 }
 
 start_dir="$(script_dir)"
 # shellcheck source=./options.sh
 . "$start_dir/options.sh"
 
-if [ "${1:-}" = "all" ]; then
+case "${1:-}" in
+all)
 	run_all
 	exit 0
-fi
+	;;
+list | --list)
+	printf '%s\n' all "${steps[@]}"
+	exit 0
+	;;
+esac
 
 cat <<"EOF"
  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  
@@ -91,7 +86,7 @@ while true; do
 	echo ""
 	echo "> Select one option using up/down keys and enter to confirm:"
 	echo ""
-	options=("all" "xcode" "brew" "ssh" "directories" "gitconfig" "aerospace" "ghostty" "zsh" "prezto" "abbr" "exit")
+	options=("all" "${steps[@]}" "exit")
 
 	select_option "${options[@]}"
 	choice=$?
