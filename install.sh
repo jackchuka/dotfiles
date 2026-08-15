@@ -24,6 +24,26 @@ expand_home_path() {
 	printf '%s\n' "$path"
 }
 
+link_file() {
+	local src="$1" dest="$2" backup n
+	if [ -L "$dest" ] && [ "$(readlink "$dest")" = "$src" ]; then
+		return 0
+	fi
+	if [ -e "$dest" ] || [ -L "$dest" ]; then
+		# Never overwrite an existing backup, it may be the only copy left.
+		backup="$dest.backup"
+		n=1
+		while [ -e "$backup" ] || [ -L "$backup" ]; do
+			backup="$dest.backup.$n"
+			n=$((n + 1))
+		done
+		mv "$dest" "$backup"
+		echo "backed up $dest -> $backup"
+	fi
+	mkdir -p "$(dirname "$dest")"
+	ln -s "$src" "$dest"
+}
+
 run_all() {
 	# shellcheck source=./xcode.sh
 	. "$start_dir/xcode.sh"
