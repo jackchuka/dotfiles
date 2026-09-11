@@ -86,6 +86,11 @@ Creates symlinks to $HOME directory
 
 - `gitignore_global` -> `$HOME/.gitignore_global`
 
+#### gnupg
+
+Writes `~/.gnupg/gpg-agent.conf` so commit signing uses `pinentry-mac` and the
+passphrase is cached (tick "Save in Keychain" the first time you sign)
+
 #### aerospace
 
 Setups aerospace config symlinks

@@ -46,7 +46,7 @@ link_file() {
 
 # The one list of steps: execution order for `all`, menu order, and `list`
 # output all derive from it.
-steps=(xcode brew ssh directories gitconfig aerospace ghostty prezto zsh abbr)
+steps=(xcode brew ssh directories gitconfig gnupg aerospace ghostty prezto zsh abbr)
 
 run_all() {
 	local step
