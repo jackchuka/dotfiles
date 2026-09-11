@@ -24,6 +24,8 @@ brew "jackchuka/tap/ccli"
 
 ## Utilities
 brew "tlrc"
+tap "FelixKratz/formulae"
+brew "borders"
 # brew "steipete/tap/gogcli"
 
 brew "mise"
@@ -56,7 +58,8 @@ cask 'google-japanese-ime'
 
 ## Utilities Applications
 cask 'grammarly-desktop'
-cask 'aerospace'
+tap 'nikitabobko/tap'
+cask 'nikitabobko/tap/aerospace'
 cask "voiceink"
 cask "cleanshot"
 cask "mouseless"
