@@ -103,6 +103,12 @@ Setups Ghostty config symlink
 
 - `ghostty` -> `$XDG_CONFIG_HOME/ghostty/config`
 
+#### [mouseless](https://mouseless.click/)
+
+Setups Mouseless config symlink (configs live in Dropbox so they sync across machines)
+
+- `~/Dropbox/sync/mouseless-configs` -> `$HOME/Library/Application Support/Mouseless/configs`
+
 #### [prezto](https://github.com/sorin-ionescu/prezto)
 
 Downloads prezto and updates `zpreztorc`
