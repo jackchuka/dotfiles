@@ -13,6 +13,7 @@ abbr -f gm="git checkout \"\$(git symbolic-ref refs/remotes/origin/HEAD | cut -d
 abbr -f gamend="git add . && git commit --amend --no-edit"
 abbr -f gs="git status"
 abbr -f gd="git diff --color-words"
+abbr -f gds="git diff --stat"
 
 abbr -f k="kubectl"
 abbr -f kg="kubectl get"
