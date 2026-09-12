@@ -109,6 +109,13 @@ Setups Mouseless config symlink (configs live in Dropbox so they sync across mac
 
 - `~/Dropbox/sync/mouseless-configs` -> `$HOME/Library/Application Support/Mouseless/configs`
 
+#### [gh oss-watch](https://github.com/jackchuka/gh-oss-watch)
+
+Setups `gh oss-watch` config symlink (watch list and last-seen cache live in
+Dropbox so they sync across machines)
+
+- `~/Dropbox/sync/gh-oss-watch` -> `$HOME/.gh-oss-watch`
+
 #### [prezto](https://github.com/sorin-ionescu/prezto)
 
 Downloads prezto and updates `zpreztorc`
