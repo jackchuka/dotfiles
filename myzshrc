@@ -24,16 +24,23 @@ if [ -d "$DROPBOX_PATH" ]; then
 	export HISTFILE=$DROPBOX_PATH/zhistory
 fi
 
+# The shell argument matters: bare shellenv guesses the shell from the parent
+# process name, and Homebrew's own comment notes that lookup "is known to fail
+# under some sandboxes". On a miss it silently drops the fpath line and only
+# that line, so PATH keeps working while completions quietly break.
 if [ -x /opt/homebrew/bin/brew ]; then
-	eval "$(/opt/homebrew/bin/brew shellenv)"
+	eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 elif [ -x /usr/local/bin/brew ]; then
-	eval "$(/usr/local/bin/brew shellenv)"
+	eval "$(/usr/local/bin/brew shellenv zsh)"
 elif has brew; then
-	eval "$(brew shellenv)"
+	eval "$(brew shellenv zsh)"
 fi
 
 if has brew; then
-	export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+	# Add both completion dirs ourselves rather than trusting shellenv for
+	# site-functions, and dedupe so nested shells do not keep re-prepending.
+	typeset -U fpath
+	fpath=("$(brew --prefix)/share/zsh-completions" "$(brew --prefix)/share/zsh/site-functions" $fpath)
 
 	autoload -Uz compinit
 	compinit -u
