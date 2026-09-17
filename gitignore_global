@@ -11,3 +11,5 @@ docs/superpowers/
 .auto-claude/
 .claude_settings.json
 .worktrees/
+__pycache__/
+*.pyc
