@@ -74,7 +74,9 @@ if has kubectl; then
 	autoload -U colors
 	colors
 	if has brew; then
-		source "$(brew --prefix)/etc/zsh-kubectl-prompt/kubectl.zsh"
+		kubectl_prompt="$(brew --prefix)/etc/zsh-kubectl-prompt/kubectl.zsh"
+		[ -f "$kubectl_prompt" ] && source "$kubectl_prompt"
+		unset kubectl_prompt
 	fi
 	# RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 
