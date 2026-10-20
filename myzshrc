@@ -50,6 +50,13 @@ fi
 
 #### Custom
 
+# prezto's utility module aliases these to `-i`, and a coding agent's shell has
+# no one to answer the prompt, so an overwrite or delete hangs. CLAUDECODE alone
+# is also set in IDE-extension terminals a person types into.
+if [ -n "$CLAUDE_CODE_CHILD_SESSION$CODEX_THREAD_ID$CURSOR_AGENT$GEMINI_CLI$AI_AGENT" ]; then
+	unalias cp ln mv rm 2>/dev/null
+fi
+
 # mise(rtx)
 if has mise; then
 	eval "$(mise activate zsh)"
