@@ -24,6 +24,7 @@ brew "jackchuka/tap/ccli"
 
 ## Utilities
 brew "tlrc"
+brew "witr"
 tap "FelixKratz/formulae"
 brew "borders"
 # brew "steipete/tap/gogcli"
