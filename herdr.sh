@@ -7,3 +7,4 @@ fi
 
 link_file "$start_dir/herdr/keys.json" "$HOME/.config/herdr-app/keys.json"
 link_file "$start_dir/herdr/settings.json" "$HOME/.config/herdr-app/settings.json"
+link_file "$start_dir/herdr/mods/agent-top" "$HOME/.config/herdr-app/mods/agent-top"

@@ -109,6 +109,7 @@ Installs the Herdr app (into `~/Applications`) if missing and setups config syml
 
 - `herdr/keys.json` -> `$HOME/.config/herdr-app/keys.json`
 - `herdr/settings.json` -> `$HOME/.config/herdr-app/settings.json`
+- `herdr/mods/agent-top` -> `$HOME/.config/herdr-app/mods/agent-top` (⌘; jumps to the top agent in Priority order)
 
 #### [mouseless](https://mouseless.click/)
 

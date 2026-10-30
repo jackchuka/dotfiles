@@ -63,7 +63,8 @@
     "cmd-ctrl-left": "pane.go:left",
     "cmd-ctrl-right": "pane.go:right",
     "cmd-ctrl-up": "pane.go:up",
-    "cmd-ctrl-down": "pane.go:down"
+    "cmd-ctrl-down": "pane.go:down",
+    "cmd-;": "mod.open:agent-top"
   },
   "terminal": {
     "cmd-c": "terminal.copy",
