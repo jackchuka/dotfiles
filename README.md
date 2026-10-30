@@ -103,6 +103,13 @@ Setups Ghostty config symlink
 
 - `ghostty` -> `$XDG_CONFIG_HOME/ghostty/config`
 
+#### [herdr](https://herdr.dev/)
+
+Installs the Herdr app (into `~/Applications`) if missing and setups config symlinks (keybindings aligned with Superset)
+
+- `herdr/keys.json` -> `$HOME/.config/herdr-app/keys.json`
+- `herdr/settings.json` -> `$HOME/.config/herdr-app/settings.json`
+
 #### [mouseless](https://mouseless.click/)
 
 Setups Mouseless config symlink (configs live in Dropbox so they sync across machines)
