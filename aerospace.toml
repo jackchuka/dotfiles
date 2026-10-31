@@ -207,9 +207,3 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
-
-# Workaround for Ghostty terminal emulator that uses MacOS native tab
-# https://ghostty.org/docs/help/macos-tiling-wms
-[[on-window-detected]]
-if.app-id = "com.mitchellh.ghostty"
-run = ["layout floating"]

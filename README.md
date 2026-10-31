@@ -97,12 +97,6 @@ Setups aerospace config symlinks
 
 - `aerospace.toml` -> `$HOME/.config/aerospace/aerospace.toml`
 
-#### [ghostty](https://ghostty.org/)
-
-Setups Ghostty config symlink
-
-- `ghostty` -> `$XDG_CONFIG_HOME/ghostty/config`
-
 #### [herdr](https://herdr.dev/)
 
 Installs the Herdr app (into `~/Applications`) if missing and setups config symlinks (keybindings aligned with Superset)
