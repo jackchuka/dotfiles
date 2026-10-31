@@ -2,8 +2,18 @@
 
 ###  myzshrc
 
-export EDITOR=code
-export VISUAL=vim
+# CLAUDECODE alone is also set in IDE-extension terminals a person types into.
+is_agent() {
+	[ -n "$CLAUDE_CODE_CHILD_SESSION$CODEX_THREAD_ID$CURSOR_AGENT$GEMINI_CLI$AI_AGENT" ]
+}
+
+# An agent has no one to close an editor, so anything that opens one would hang.
+if is_agent; then
+	export EDITOR=true VISUAL=true GIT_EDITOR=true
+else
+	export EDITOR="code --wait"
+	export VISUAL=vim
+fi
 
 export DROPBOX_PATH=$HOME/Dropbox/sync
 export GOPATH=$HOME/dev
@@ -40,21 +50,31 @@ if has brew; then
 	autoload -Uz compinit
 	compinit -u
 
+	# Session abbreviations log on every startup, which lands in every agent
+	# command's output.
+	export ABBR_QUIET=1
 	source "$(brew --prefix)/share/zsh-abbr/zsh-abbr.zsh"
 fi
 
 #### Custom
 
 # prezto's utility module aliases these to `-i`, and a coding agent's shell has
-# no one to answer the prompt, so an overwrite or delete hangs. CLAUDECODE alone
-# is also set in IDE-extension terminals a person types into.
-if [ -n "$CLAUDE_CODE_CHILD_SESSION$CODEX_THREAD_ID$CURSOR_AGENT$GEMINI_CLI$AI_AGENT" ]; then
+# no one to answer the prompt, so an overwrite or delete hangs. Its directory
+# module also unsets CLOBBER, so an agent rewriting a file with > fails.
+if is_agent; then
 	unalias cp ln mv rm 2>/dev/null
+	setopt clobber
 fi
 
 # mise(rtx)
+# activate switches versions from a prompt hook, and an agent's shell never
+# draws a prompt, so it gets shims instead.
 if has mise; then
-	eval "$(mise activate zsh)"
+	if is_agent; then
+		eval "$(mise activate zsh --shims)"
+	else
+		eval "$(mise activate zsh)"
+	fi
 	# . <(mise completion zsh) && compdef _mise mise
 fi
 
