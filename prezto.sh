@@ -35,6 +35,8 @@ else
 			if [[ -e "$preztorc" ]] && cp "$preztorc" "$preztorc.owned"; then
 				rm "$preztorc"
 				mv "$preztorc.owned" "$preztorc"
+				# Our edits were made in the clone; undo them so git pull stays clean.
+				git -C "$zprefix/.zprezto" checkout -- runcoms/zpreztorc
 				echo "migrated $preztorc out of the prezto clone"
 			fi
 		elif [[ ! -e "$preztorc" ]]; then
