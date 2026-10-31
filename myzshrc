@@ -58,6 +58,18 @@ if has mise; then
 	# . <(mise completion zsh) && compdef _mise mise
 fi
 
+# bnpm installs into PNPM_HOME, which is not on PATH yet, so `has` cannot see it.
+export PNPM_HOME=$HOME/Library/pnpm
+if [ -x "$PNPM_HOME/bin/bnpm" ]; then
+	typeset -U path
+	path=("$PNPM_HOME/bin" $path)
+	pnpm() { bnpm --pm=pnpm "$@" }
+	_bnpm() { words[1]=pnpm; _normal }
+	(( $+functions[compdef] )) && compdef _bnpm bnpm
+else
+	unset PNPM_HOME
+fi
+
 # Git
 if has git; then
 	gss() {
