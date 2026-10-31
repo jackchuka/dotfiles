@@ -12,7 +12,7 @@
 	lga = !git lg --all
 	# clean merged local branch
 	cleanup = !git branch --merged | grep  -v '\\*\\|master\\|main\\|develop' | xargs -n 1 git branch -d
-	# checkout with incremental serach, require fzf
+	# checkout with incremental search, require fzf
 	ch = !git branch -a | perl -nlE 'say if !$c{$_}++' | grep -v -- '->' | fzf | cut -b 3- | xargs git checkout
 	# list and checkout PRs on GitHub
 	pr = ! gh pr checkout $(gh pr list | fzf | awk '{ print $1 }')
