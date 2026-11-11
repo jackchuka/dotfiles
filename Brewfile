@@ -24,6 +24,7 @@ brew "pinentry-mac"
 brew "gitleaks"
 brew "jackchuka/tap/git-customs"
 brew "jackchuka/tap/ccli"
+brew "jackchuka/tap/dutix"
 
 ## Utilities
 brew "tlrc"

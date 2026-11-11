@@ -1,0 +1,8 @@
+version: 1
+defaults:
+  com.google.Chrome: # Chrome
+    utis: [public.html]
+    schemes: [http, https]
+  com.microsoft.VSCode: # Code
+    extensions: [go, js, json, md, py, sh, svg, tf, toml, ts, tsx, yaml, yml]
+    utis: [public.tab-separated-values-text]

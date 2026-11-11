@@ -14,6 +14,8 @@ A super lazy programmer's dotfiles, although it's more like a setup script for t
 
 - Creates directories in `directories`
 
+- Sets default apps for file types and URL schemes from `default-apps.yaml` (with [dutix](https://github.com/jackchuka/dutix))
+
 ## Get Started
 
 One line, from a fresh Mac:
